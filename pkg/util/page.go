@@ -1,13 +1,17 @@
 package util
 
 import (
-	"fmt"
+	"github.com/zagss/blog/pkg/setting"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
 func GetPage(c *gin.Context) int {
 	result := 0
-	fmt.Println("page: ", c.Query("page"))
+	page, _ := strconv.Atoi(c.Query("page"))
+	if page > 0 {
+		result = (page - 1) * setting.PageSize
+	}
 	return result
 }

@@ -19,6 +19,6 @@ go.work
 
 # OS General
 .DS_Store
-
+.idea
 sql
 deploy.sh

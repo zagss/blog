@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/zagss/blog/pkg/setting"
 )
 
@@ -22,6 +23,7 @@ func init() {
 		dbType, dbName, user, password, host, tablePrefix string
 	)
 
+	// 获取配置项
 	sec, _ := setting.Cfg.GetSection("database")
 	dbType = sec.Key("TYPE").String()
 	dbName = sec.Key("NAME").String()
@@ -30,15 +32,17 @@ func init() {
 	host = sec.Key("HOST").String()
 	tablePrefix = sec.Key("TABLE_PREFIX").String()
 
-	db, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	// 连接数据库
+	db, err = gorm.Open(dbType, fmt.Sprintf("%s:%s@tcp(%s)/%s?charset=utf8mb4&parseTime=True&loc=Local",
 		user, password, host, dbName))
 	if err != nil {
 		log.Println(err)
 	}
-
+	// 更改默认表名称规则
 	gorm.DefaultTableNameHandler = func(db *gorm.DB, defaultTableName string) string {
 		return tablePrefix + defaultTableName
 	}
+	// 表名不加s
 	db.SingularTable(true)
 	db.LogMode(true)
 	db.DB().SetMaxIdleConns(10)
