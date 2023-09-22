@@ -3,9 +3,11 @@ module github.com/zagss/blog
 go 1.20
 
 require (
+	github.com/astaxie/beego v1.12.3
 	github.com/gin-gonic/gin v1.9.1
 	github.com/go-ini/ini v1.67.0
 	github.com/jinzhu/gorm v1.9.16
+	github.com/unknwon/com v1.0.1
 )
 
 require (
@@ -26,6 +28,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
+	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
 	github.com/stretchr/testify v1.8.4 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.11 // indirect

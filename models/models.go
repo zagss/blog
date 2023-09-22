@@ -9,9 +9,10 @@ import (
 	"github.com/zagss/blog/pkg/setting"
 )
 
+// Model 在不指定 column 字段标签情况下，GORM 默认使用字段名的 snake_case 作为列名
 type Model struct {
 	ID         int `json:"id"`
-	CreateOn   int `json:"created_on"`
+	CreatedOn  int `json:"created_on"`
 	ModifiedOn int `json:"modified_on"`
 }
 
